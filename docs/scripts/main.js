@@ -57,3 +57,6 @@ var demoState = {
     'goals':['guitar', 'programming']
   }
 }
+
+document.querySelector('#jsNewGoals form').addEventListener('click', listeners.addGoal)
+document.querySelector('.goals_input').addEventListener('click', listeners.deleteGoal)
