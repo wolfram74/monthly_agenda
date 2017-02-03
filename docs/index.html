@@ -3,7 +3,42 @@
   <title>Monthly Agenda</title>
 </head>
 <body>
+  <div id='jsCheckInDiv'>
+    <button>Toggle visuals</button>
+    <h3>Select Check in Day</h3>
+  </div>
+  <div id='jsCurrentMonth'>
+    <h3>Goals for <span ud='jsCurrentGoals'> </span></h3>
+
+  </div>
+  <div id='jsNewGoals'>
+    <button>Toggle visuals</button>
+    <h3>set months goals for <span id='jsNextGoals'></span></h3>
+    <form>
+      <ul class='goals_input'>
+        <li class='goal_field'>
+          <input type ='text' class='description' name='description'> <br>
+          <input type ='text' class='plan' name='plan'><br>
+          <input type ='number' class='nonZeroThreshold' name='nonZeroThreshold'>
+          <button>Remove goal</button>
+        </li>
+      </ul>
+      <button id='jsAddGoal'>Add Goal</button>
+      <input type='submit'>
+    </form>
+  </div>
+  <div id='jsPastMonth'>
+    <h3>Previous Months</h3>
+    <button>Toggle visuals</button>
+    <br>
+    <select>
+      <option></option>
+    </select>
+    <div class='monthDisplay'></div>
+  </div>
+
   Welcome
 </body>
 <script type="text/javascript" src='scripts/main.js'></script>
+<script type="text/javascript" src='scripts/views.js'></script>
 </html>

@@ -1,10 +1,15 @@
 function viewInitialize(){
   if(typeof state.checkInDay === 'undefined'){
     // do checkInDay prompt
+    document.querySelector('#jsCheckInDiv').innerHTML = renderer.checkInDayPrompt()
     return
   }
   if(typeof state[currentMonth()]==='undefined'){
     // do set goals prompt
+    return
+  }
+  if(setNextMonthsGolsCheck()){
+    //
     return
   }
 }

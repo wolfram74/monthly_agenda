@@ -21,3 +21,9 @@ goalObject
   description: string describing broad goal
   plan: how goal will be met
   nonZeroThreshold: int describing minimum minutes for "worked on"
+
+#problems to solve
+
+* determining if a checkInDay has been set
+* determining what months should be defined
+* determining which week is being looked at
