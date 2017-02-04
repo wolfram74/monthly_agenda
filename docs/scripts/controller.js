@@ -18,5 +18,21 @@ listeners = (function(){
     goal.parentElement.removeChild(goal)
     console.log('deleting');
   }
+  API.parseGoalForm = function(event){
+    event.preventDefault()
+    const form = event.target;
+    const fields = form.querySelectorAll('li');
+    console.log(fields);
+    console.log([...fields]);
+    const goals = [...fields].map((ele, ind)=>{
+      return {
+        description: ele.description,
+        plan: ele.description,
+        nonZeroThreshold: ele.description,
+      }
+    })
+    // const goals = fields.
+    // console.log(fields)
+  }
   return API
 })()

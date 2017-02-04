@@ -20,9 +20,9 @@ renderer = (function(){
     li.classList.add('goal_field')
 
     const innerText = `
-          <input type ='text' class='description' name='description'> <br>
-          <input type ='text' class='plan' name='plan'><br>
-          <input type ='number' class='nonZeroThreshold' name='nonZeroThreshold'>
+          Description <input type ='text' class='description' name='description'> <br>
+          Plan <input type ='text' class='plan' name='plan'><br>
+          Daily goal in minutes<input type ='number' class='nonZeroThreshold' name='nonZeroThreshold'>
           <button>Remove goal</button>
     `;
     li.innerHTML = innerText;

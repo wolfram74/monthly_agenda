@@ -59,4 +59,5 @@ var demoState = {
 }
 
 document.querySelector('#jsNewGoals form').addEventListener('click', listeners.addGoal)
+document.querySelector('#jsNewGoals form').addEventListener('submit', listeners.parseGoalForm)
 document.querySelector('.goals_input').addEventListener('click', listeners.deleteGoal)
