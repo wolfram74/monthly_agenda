@@ -1,3 +1,36 @@
+utils = (function(){
+  let API = {}
+  API.setListeners = function(){
+    document.querySelector('#jsNewGoals form').addEventListener('click', listeners.addGoal);
+    document.querySelector('#jsNewGoals form').addEventListener('submit', listeners.parseGoalForm);
+    document.querySelector('.goals_input').addEventListener('click', listeners.deleteGoal);
+  }
+
+  API.firstCheckIn = function(){
+
+  }
+
+  API.lastCheckIn = function(){
+
+  }
+
+  API.currentMonth = function(){
+    const today = new Date()
+    let month = today.getMonth();
+    let year = today.getFullYear();
+    return `y${year}m${month}`
+  }
+
+  API.saveState = function(){
+    localStorage.setItem('state', JSON.stringify(state));
+  }
+
+  API.loadState = function(){
+    return JSON.parse(localStorage.getItem('state')) || {};
+  }
+  return API
+})()
+
 function viewInitialize(){
   if(typeof state.checkInDay === 'undefined'){
     // do checkInDay prompt
@@ -14,23 +47,8 @@ function viewInitialize(){
   }
 }
 
-function currentMonth(){
-  const today = new Date()
-  let month = today.getMonth();
-  let year = today.getFullYear();
-  return `y${year}m${month}`
-}
-
-function saveState(){
-  localStorage.setItem('state', JSON.stringify(state));
-}
-
-function loadState(){
-  return JSON.parse(localStorage.getItem('state')) || {};
-}
-
 console.log('farts')
-const state = loadState()
+const state = utils.loadState()
 const weekDays = [
   'Sunday', 'Monday', 'Tuesday', 'Wednesday',
   'Thursday', 'Friday', 'Saturday']
@@ -58,6 +76,4 @@ var demoState = {
   }
 }
 
-document.querySelector('#jsNewGoals form').addEventListener('click', listeners.addGoal)
-document.querySelector('#jsNewGoals form').addEventListener('submit', listeners.parseGoalForm)
-document.querySelector('.goals_input').addEventListener('click', listeners.deleteGoal)
+utils.setListeners()

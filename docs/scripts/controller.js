@@ -26,13 +26,15 @@ listeners = (function(){
     console.log([...fields]);
     const goals = [...fields].map((ele, ind)=>{
       return {
-        description: ele.description,
-        plan: ele.description,
-        nonZeroThreshold: ele.description,
+        description: ele.children.description.value,
+        plan: ele.children.plan.value,
+        nonZeroThreshold: ele.children.nonZeroThreshold.value,
       }
-    })
+    });
+    console.log(goals)
     // const goals = fields.
     // console.log(fields)
   }
   return API
 })()
+

@@ -16,18 +16,12 @@ renderer = (function(){
   }
 
   API.emptyGoalField = function(){
-    let li = document.createElement('li')
-    li.classList.add('goal_field')
-
-    const innerText = `
-          Description <input type ='text' class='description' name='description'> <br>
-          Plan <input type ='text' class='plan' name='plan'><br>
-          Daily goal in minutes<input type ='number' class='nonZeroThreshold' name='nonZeroThreshold'>
-          <button>Remove goal</button>
-    `;
-    li.innerHTML = innerText;
-    console.log('making shit', li, innerText)
-    return li
+    const firstLi = document.querySelector('.goals_input .goal_field')
+    let newLi = firstLi.cloneNode(true);
+    newLi.children.description.value = ''
+    newLi.children.plan.value = ''
+    newLi.children.nonZeroThreshold.value = ''
+    return newLi
   }
 
   return API
