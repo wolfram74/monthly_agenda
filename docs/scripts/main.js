@@ -4,6 +4,8 @@ utils = (function(){
     document.querySelector('#jsNewGoals form').addEventListener('click', listeners.addGoal);
     document.querySelector('#jsNewGoals form').addEventListener('submit', listeners.parseGoalForm);
     document.querySelector('.goals_input').addEventListener('click', listeners.deleteGoal);
+    const displayTogglers = document.querySelectorAll('.hide_content');
+    displayTogglers.forEach((toggle)=> toggle.addEventListener('click', listeners.hideSibling))
   }
 
   API.firstCheckIn = function(){

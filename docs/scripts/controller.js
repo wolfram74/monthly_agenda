@@ -35,6 +35,15 @@ listeners = (function(){
     // const goals = fields.
     // console.log(fields)
   }
+  API.hideSibling = function(event){
+    console.log(event.target)
+    event.preventDefault()
+    if(event.target.parentElement.children[1].style.display===''){
+      event.target.parentElement.children[1].style.display = 'none'
+    } else{
+      event.target.parentElement.children[1].style.display = ''
+    }
+  }
   return API
 })()
 

@@ -4,37 +4,44 @@
 </head>
 <body>
   <div id='jsCheckInDiv'>
-    <button>Toggle visuals</button>
-    <h3>Select Check in Day</h3>
+    <button class='hide_content'>Toggle visuals</button>
+    <div class='content'>
+      <h3>Select Check in Day</h3>
+    </div>
   </div>
   <div id='jsCurrentMonth'>
-    <h3>Goals for <span ud='jsCurrentGoals'> </span></h3>
-
+    <div class='content'>
+      <h3>Goals for <span ud='jsCurrentGoals'> </span></h3>
+      <div class='monthDisplay'></div>
+    </div>
   </div>
   <div id='jsNewGoals'>
-    <button>Toggle visuals</button>
-    <h3>set months goals for <span id='jsNextGoals'></span></h3>
-    <form>
-      <ul class='goals_input'>
-        <li class='goal_field'>
-          Description <input type ='text' class='description' name='description'> <br>
-          Plan <input type ='text' class='plan' name='plan'><br>
-          Daily goal in minutes<input type ='number' class='nonZeroThreshold' name='nonZeroThreshold'>
-          <button>Remove goal</button>
-        </li>
-      </ul>
-      <button id='jsAddGoal'>Add Goal</button>
-      <input type='submit'>
-    </form>
+    <button class='hide_content'>Toggle visuals</button>
+    <div class='content'>
+      <h3>set months goals for <span id='jsNextGoals'></span></h3>
+      <form>
+        <ul class='goals_input'>
+          <li class='goal_field'>
+            Description <input type ='text' class='description' name='description'> <br>
+            Plan <input type ='text' class='plan' name='plan'><br>
+            Daily goal in minutes<input type ='number' class='nonZeroThreshold' name='nonZeroThreshold'>
+            <button>Remove goal</button>
+          </li>
+        </ul>
+        <button id='jsAddGoal'>Add Goal</button>
+        <input type='submit'>
+      </form>
+    </div>
   </div>
   <div id='jsPastMonth'>
-    <h3>Previous Months</h3>
-    <button>Toggle visuals</button>
-    <br>
-    <select>
-      <option></option>
-    </select>
-    <div class='monthDisplay'></div>
+    <button class='hide_content'>Toggle visuals</button>
+    <div class='content'>
+      <h3>Previous Months</h3>
+      <br>
+      <select>
+        <option></option>
+      </select>
+    </div>
   </div>
 
   Welcome
