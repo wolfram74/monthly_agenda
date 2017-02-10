@@ -6,6 +6,7 @@ utils = (function(){
     document.querySelector('.goals_input').addEventListener('click', listeners.deleteGoal);
     const displayTogglers = document.querySelectorAll('.hide_content');
     displayTogglers.forEach((toggle)=> toggle.addEventListener('click', listeners.hideSibling))
+    document.querySelector('#jsCheckInDiv select').addEventListener('change', listeners.checkInUpdate)
   }
 
   API.firstCheckIn = function(){

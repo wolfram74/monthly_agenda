@@ -44,6 +44,10 @@ listeners = (function(){
       event.target.parentElement.children[1].style.display = ''
     }
   }
+
+  API.checkInUpdate = function(event){
+    state.checkInDay = parseInt(event.target.value)
+  }
   return API
 })()
 

@@ -7,12 +7,31 @@
     <button class='hide_content'>Toggle visuals</button>
     <div class='content'>
       <h3>Select Check in Day</h3>
+        <select>
+          <option></option>
+          <option value = 0>Sunday</option>
+          <option value = 1>Monday</option>
+          <option value = 2>Tuesday</option>
+          <option value = 3>Wednesday</option>
+          <option value = 4>Thursday</option>
+          <option value = 5>Friday</option>
+          <option value = 6>Saturday</option>
+        </select>
     </div>
   </div>
   <div id='jsCurrentMonth'>
     <div class='content'>
       <h3>Goals for <span ud='jsCurrentGoals'> </span></h3>
-      <div class='monthDisplay'></div>
+      <div class='monthDisplay'>
+        <div class='currentGoals'>
+        </div>
+        <div class='currentWeek'>
+          <div class='currentDay'>
+          </div>
+          <div class='weeklyReflection'>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div id='jsNewGoals'>
