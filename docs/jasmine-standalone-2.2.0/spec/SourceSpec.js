@@ -22,8 +22,8 @@ describe('utils module', function(){
       let day1 = new Date(2017, 1, 24);
       let day2 = new Date(2017, 1, 26);
       let day3 = new Date(2017, 6, 28);
-      expect(utils.nthWeek(day1, 0)).toEqual(4)
-      expect(utils.nthWeek(day2, 2)).toEqual(4)
+      expect(utils.nthWeek(day1, 0)).toEqual(3)
+      expect(utils.nthWeek(day2, 2)).toEqual(3)
       expect(utils.nthWeek(day3, 1)).toEqual(4)
     })
     it('should identify days before the first threshold in the next month', function(){

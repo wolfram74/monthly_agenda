@@ -37,7 +37,37 @@ utils = (function(){
   };
 
   API.nthWeek = function(dateObj, checkIn){
+    const year = dateObj.getFullYear();
+    const month = dateObj.getMonth();
+    const monthLength = new Date(year, month+1, 0).getDate()
+    const weekShift = new Date(year, month, 1).getDay()
+    const today = dateObj.getDate()
+    console.log(year, month, monthLength, weekShift, weekDays[weekShift])
 
+    if(today+weekShift -7< checkIn){
+      return 0
+    }
+    if(today+weekShift -14< checkIn){
+      return 1
+    }
+    if(today+weekShift -21< checkIn){
+      return 2
+    }
+    if(today+weekShift -28< checkIn){
+      return 3
+    }
+    if(today+weekShift -35< checkIn){
+      return 4
+    }
+    // date, shift, checkIn
+    // 1,0,0 -> 0
+    // 1,n,n -> 0
+    // 2,0,0 -> 1
+    // 2,n,n -> 1
+    // 8,1,0 -> 1
+    // 8,c+1,c -> 1
+    // d>7, s, c -> n>0
+    return Math.floor((dateObj.getDate()-weekShift+checkIn)/7)
   };
 
   API.checkInDays = function(){
