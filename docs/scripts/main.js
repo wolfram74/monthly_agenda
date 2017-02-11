@@ -36,6 +36,10 @@ utils = (function(){
     console.log(year, month, monthLength, weekShift, weekDays[weekShift])
   };
 
+  API.nthWeek = function(dateObj, checkIn){
+
+  };
+
   API.checkInDays = function(){
     const today = new Date()
 
