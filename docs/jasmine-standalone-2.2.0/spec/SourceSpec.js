@@ -30,9 +30,9 @@ describe('utils module', function(){
       let day1 = new Date(2017, 0, 30);
       let day2 = new Date(2017, 1, 27);
       let day3 = new Date(2017, 6, 28);
-      expect(utils.nthWeek(day1, 0)).toEqual(0)
-      expect(utils.nthWeek(day2, 9)).toEqual(0)
-      expect(utils.nthWeek(day3, 4)).toEqual(0)
+      expect(utils.nthWeek(day1, 0)).toEqual(0) // there is no 6th sunday in jan
+      expect(utils.nthWeek(day2, 5)).toEqual(0) // there is no 5th friday in feb
+      expect(utils.nthWeek(day3, 4)).toEqual(0) // there is no 5th thursday in july
     })
   })
 })
