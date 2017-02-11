@@ -28,9 +28,9 @@ describe('utils module', function(){
       let day3 = new Date(2017, 6, 1);
       let day4 = new Date(2017, 1, 2);
       expect(utils.nthWeek(day1, 0)).toEqual(0)
-      expect(utils.nthWeek(day1, 3)).toEqual(1)
-      expect(utils.nthWeek(day2, 6)).toEqual(0)
-      expect(utils.nthWeek(day3, 1)).toEqual(0)
+      expect(utils.nthWeek(day2, 3)).toEqual(1)
+      expect(utils.nthWeek(day3, 6)).toEqual(0)
+      expect(utils.nthWeek(day4, 1)).toEqual(0)
     })
     it('should identify days before the fourth threshold', function(){
       let day1 = new Date(2017, 1, 24);
