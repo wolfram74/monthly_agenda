@@ -37,30 +37,41 @@ utils = (function(){
   };
 
   API.nthWeek = function(dateObj, checkIn){
+    /*
+    day, shift, checkin -> nth week
+    1, s, s+0 -> 0
+    d, s, s+0 -> ceil(((d-1)/7)
+    (1, 2), s, s+1 -> 0
+    d, s, s+1 ->
+    */
     const year = dateObj.getFullYear();
     const month = dateObj.getMonth();
     const monthLength = new Date(year, month+1, 0).getDate();
     const weekShift = new Date(year, month, 1).getDay();
     const today = dateObj.getDate();
-    let week = Math.floor((today+weekShift-checkIn)/7);
-    console.log(month, today, monthLength, week, week*7 , weekShift)
+    let week = Math.abs(
+      Math.ceil(
+        (today-1-(weekShift-checkIn))/7
+        )
+      );
+    // console.log(month, today, monthLength, week, checkIn , weekShift)
     // return monthLength < (week+1)*7-weekShift ? week : 0;
     return week
-    // if(today+weekShift -7< checkIn){
-    //   return 0
-    // }
-    // if(today+weekShift -14< checkIn){
-    //   return 1
-    // }
-    // if(today+weekShift -21< checkIn){
-    //   return 2
-    // }
-    // if(today+weekShift -28< checkIn){
-    //   return 3
-    // }
-    // if(today+weekShift -35< checkIn){
-    //   return 4
-    // }
+    if(today+weekShift -7< checkIn){
+      return 0
+    }
+    if(today+weekShift -14< checkIn){
+      return 1
+    }
+    if(today+weekShift -21< checkIn){
+      return 2
+    }
+    if(today+weekShift -28< checkIn){
+      return 3
+    }
+    if(today+weekShift -35< checkIn){
+      return 4
+    }
     // return Math.floor((today+weekShift-checkIn)/7)
   };
 
