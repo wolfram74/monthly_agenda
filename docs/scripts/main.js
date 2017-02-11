@@ -24,6 +24,23 @@ utils = (function(){
     return `y${year}m${month}`
   }
 
+  API.currentWeek = function(){
+    // compare to list of checkin days, get index of first <= to present
+    // or see what getDate()-getDay()/7 floored is
+    //months are 0 index, new Date(year, n, 0).getDate() returns length of month n-1
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth();
+    const monthLength = new Date(year, month+1, 0).getDate()
+    const weekShift = new Date(year, month, 1).getDay()
+    console.log(year, month, monthLength, weekShift, weekDays[weekShift])
+  };
+
+  API.checkInDays = function(){
+    const today = new Date()
+
+  }
+
   API.saveState = function(){
     localStorage.setItem('state', JSON.stringify(state));
   }
