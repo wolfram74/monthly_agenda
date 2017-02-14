@@ -75,46 +75,8 @@ describe('utils module', function(){
       })
       it('2017 july 28th is on or before the first thursday of august', function(){
         let day3 = new Date(2017, 6, 28);
-        expect(utils.nthWeek(day3, 4)).toEqual(4)
+        expect(utils.nthWeek(day3, 4)).toEqual(0)
       })
-    })
-    xit('if checkin is also the first day of the month, first day of the month is in week 0', function(){
-      let day1 = new Date(2017,1,1);
-      expect(utils.nthWeek(day1, 3)).toEqual(0)
-      let day2 = new Date(2017,3,1);
-      expect(utils.nthWeek(day2, 6)).toEqual(0)
-    })
-    xit('if checkin is also the first day of the month, 2nd day of the month is in week 1', function(){
-      let day1 = new Date(2017,1,2);
-      expect(utils.nthWeek(day1, 3)).toEqual(1)
-      let day2 = new Date(2017,4,2);
-      expect(utils.nthWeek(day2, 1)).toEqual(1)
-    })
-    xit('should identify days before the first threshold', function(){
-      let day1 = new Date(2017, 1, 1);
-      expect(utils.nthWeek(day1, 0)).toEqual(0)
-      let day2 = new Date(2017, 1, 3);
-      expect(utils.nthWeek(day2, 3)).toEqual(1)
-      let day3 = new Date(2017, 6, 1);
-      expect(utils.nthWeek(day3, 6)).toEqual(0)
-      let day4 = new Date(2017, 1, 2);
-      expect(utils.nthWeek(day4, 1)).toEqual(0)
-    })
-    xit('should identify days before the fourth threshold', function(){
-      let day1 = new Date(2017, 1, 24);
-      expect(utils.nthWeek(day1, 0)).toEqual(3)
-      let day2 = new Date(2017, 1, 19);
-      expect(utils.nthWeek(day2, 2)).toEqual(2)
-      let day3 = new Date(2017, 6, 28);
-      expect(utils.nthWeek(day3, 1)).toEqual(4)
-    })
-    xit('should identify days before the first threshold in the next month', function(){
-      let day1 = new Date(2017, 0, 30);
-      expect(utils.nthWeek(day1, 0)).toEqual(0) // there is no 6th sunday in jan
-      let day2 = new Date(2017, 1, 27);
-      expect(utils.nthWeek(day2, 5)).toEqual(0) // there is no 5th friday in feb
-      let day3 = new Date(2017, 6, 28);
-      expect(utils.nthWeek(day3, 4)).toEqual(0) // there is no 5th thursday in july
     })
   })
 })
