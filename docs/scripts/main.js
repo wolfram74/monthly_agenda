@@ -52,11 +52,14 @@ utils = (function(){
     const today = dateObj.getDate()-1;
     const fullWeeks = Math.floor(today/7);
     const weekRemainder = today % 7;
-    const gap2 = (checkIn - weekShift)%7 ;
-    const bonus2 = (dayOfWeek > gap2) ? 1 : 0;
-    console.log(today)
-    // return fullWeeks + bonus2
-    return fullWeeks
+    const firstWeekLength = (checkIn - weekShift+7)%7;
+    const bonus2 = (weekRemainder > firstWeekLength) ? 1 : 0;
+    const result = fullWeeks+bonus2;
+    if(result*7+firstWeekLength>monthLength){
+      return 0
+    }
+    return fullWeeks + bonus2
+    // return fullWeeks
   };
 
   API.checkInDays = function(){
