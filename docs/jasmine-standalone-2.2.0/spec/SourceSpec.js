@@ -10,6 +10,20 @@ describe("Meta", function() {
 
 describe('utils module', function(){
   describe('#nthWeek', function(){
+/*
+test generator
+const month = parseInt(Math.random()*12);
+const day = parseInt(Math.random()*7+24);
+const checkin = parseInt(Math.random()*7);
+const weekdays = ['sun', 'mon', 'tues', 'wednes', 'thurs', 'fri','satur']
+console.log(month)
+console.log(`
+it('2017-${month+1}-${day} is before or on the _ ${weekdays[checkin]}day', function(){
+  const day = new Date(2017, ${month}, ${day});
+  expect(utils.nthWeek(day, ${checkin})).toEqual( _ )
+})
+`)
+*/
     describe('week 0 results', function(){
       it('2017 february 1st is before or on the first wednesday', function(){
         let day1 = new Date(2017,1,1);
