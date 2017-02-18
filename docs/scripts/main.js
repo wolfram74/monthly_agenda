@@ -55,7 +55,7 @@ utils = (function(){
     const firstWeekLength = (checkIn - weekShift+7)%7;
     const bonus2 = (weekRemainder > firstWeekLength) ? 1 : 0;
     const result = fullWeeks+bonus2;
-    if(result*7+firstWeekLength>monthLength){
+    if( (result*7 + firstWeekLength) > monthLength-1){
       return 0
     }
     return fullWeeks + bonus2
