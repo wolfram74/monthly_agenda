@@ -37,29 +37,24 @@ utils = (function(){
   };
 
   API.nthWeek = function(dateObj, checkIn){
-    /*
-    day, shift, checkin -> nth week
-    1, s, s+0 -> 0
-    d, s, s+0 -> ceil(((d-1)/7)
-    (1, 2), s, s+1 -> 0
-    d, s, s+1 ->
-    */
     const year = dateObj.getFullYear();
     const month = dateObj.getMonth();
+    const daysSinceMonthStart = dateObj.getDate()-1;
+
     const monthLength = new Date(year, month+1, 0).getDate();
     const weekShift = new Date(year, month, 1).getDay();
-    const dayOfWeek = dateObj.getDay()
-    const today = dateObj.getDate()-1;
-    const fullWeeks = Math.floor(today/7);
-    const weekRemainder = today % 7;
-    const firstWeekLength = (checkIn - weekShift+7)%7;
+
+    const fullWeeks = Math.floor( daysSinceMonthStart/7 );
+    const weekRemainder = daysSinceMonthStart % 7;
+
+    const firstWeekLength = (checkIn - weekShift + 7)%7;
     const bonus = (weekRemainder > firstWeekLength) ? 1 : 0;
     const result = fullWeeks+bonus;
+
     if( (result*7 + firstWeekLength) > monthLength-1){
       return 0
     }
     return result
-    // return fullWeeks
   };
 
   API.checkInDays = function(){
