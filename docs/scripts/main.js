@@ -53,12 +53,12 @@ utils = (function(){
     const fullWeeks = Math.floor(today/7);
     const weekRemainder = today % 7;
     const firstWeekLength = (checkIn - weekShift+7)%7;
-    const bonus2 = (weekRemainder > firstWeekLength) ? 1 : 0;
-    const result = fullWeeks+bonus2;
+    const bonus = (weekRemainder > firstWeekLength) ? 1 : 0;
+    const result = fullWeeks+bonus;
     if( (result*7 + firstWeekLength) > monthLength-1){
       return 0
     }
-    return fullWeeks + bonus2
+    return result
     // return fullWeeks
   };
 
