@@ -51,7 +51,7 @@ utils = (function(){
     const bonus = (weekRemainder > firstWeekLength) ? 1 : 0;
     const result = fullWeeks+bonus;
 
-    if( (result*7 + firstWeekLength) > monthLength-1){
+    if( (result*7 + firstWeekLength) >= monthLength){
       return 0
     }
     return result
