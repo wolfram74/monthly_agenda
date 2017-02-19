@@ -15,6 +15,15 @@ renderer = (function(){
     return form
   }
 
+  API.updateCheckInDay = function(){
+    console.log(state.checkInDay)
+    const selectedOption = document.querySelector(
+      `#jsCheckInDiv option[value="${state.checkInDay}"]`
+      );
+    console.log(selectedOption)
+    selectedOption.selected = 'selected';
+  }
+
   API.emptyGoalField = function(){
     const firstLi = document.querySelector('.goals_input .goal_field')
     let newLi = firstLi.cloneNode(true);
@@ -24,6 +33,29 @@ renderer = (function(){
     return newLi
   }
 
+  API.initialize = function(){
+    if(typeof state.checkInDay != 'undefined'){
+      API.updateCheckInDay();
+    }
+    if(typeof state[currentMonth] != 'undefined'){
+      API.renderCurrentGoals();
+    }
+  }
   return API
 })()
 console.log('render loaded')
+function viewInitialize(){
+  if(typeof state.checkInDay === 'undefined'){
+    // do checkInDay prompt
+    document.querySelector('#jsCheckInDiv').innerHTML = renderer.checkInDayPrompt()
+    return
+  }
+  if(typeof state[currentMonth()]==='undefined'){
+    // do set goals prompt
+    return
+  }
+  if(setNextMonthsGoalsCheck()){
+    //
+    return
+  }
+}

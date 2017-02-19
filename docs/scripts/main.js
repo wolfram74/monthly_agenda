@@ -1,20 +1,31 @@
 utils = (function(){
   let API = {}
   API.setListeners = function(){
-    document.querySelector('#jsNewGoals form').addEventListener('click', listeners.addGoal);
-    document.querySelector('#jsNewGoals form').addEventListener('submit', listeners.parseGoalForm);
-    document.querySelector('.goals_input').addEventListener('click', listeners.deleteGoal);
+    document.querySelector('#jsNewGoals form').addEventListener(
+      'click', listeners.addGoal
+      );
+    document.querySelector('#jsNewGoals form').addEventListener(
+      'submit', listeners.parseGoalForm
+      );
+    document.querySelector('.goals_input').addEventListener(
+      'click', listeners.deleteGoal
+      );
     const displayTogglers = document.querySelectorAll('.hide_content');
-    displayTogglers.forEach((toggle)=> toggle.addEventListener('click', listeners.hideSibling))
-    document.querySelector('#jsCheckInDiv select').addEventListener('change', listeners.checkInUpdate)
+    displayTogglers.forEach(
+      (toggle) => {toggle.addEventListener(
+              'click', listeners.hideSibling
+              )}
+      );
+    document.querySelector('#jsCheckInDiv select').addEventListener(
+      'change', listeners.checkInUpdate
+      );
+    document.addEventListener('change',utils.saveState)
   }
 
   API.firstCheckIn = function(){
-
   }
 
   API.lastCheckIn = function(){
-
   }
 
   API.currentMonth = function(){
@@ -59,7 +70,6 @@ utils = (function(){
 
   API.checkInDays = function(){
     const today = new Date()
-
   }
 
   API.saveState = function(){
@@ -72,24 +82,10 @@ utils = (function(){
   return API
 })()
 
-function viewInitialize(){
-  if(typeof state.checkInDay === 'undefined'){
-    // do checkInDay prompt
-    document.querySelector('#jsCheckInDiv').innerHTML = renderer.checkInDayPrompt()
-    return
-  }
-  if(typeof state[currentMonth()]==='undefined'){
-    // do set goals prompt
-    return
-  }
-  if(setNextMonthsGolsCheck()){
-    //
-    return
-  }
-}
 
 console.log('farts')
 const state = utils.loadState()
+const currentMonth = utils.currentMonth()
 const weekDays = [
   'Sunday', 'Monday', 'Tuesday', 'Wednesday',
   'Thursday', 'Friday', 'Saturday']
@@ -117,4 +113,5 @@ var demoState = {
   }
 }
 
-utils.setListeners()
+utils.setListeners();
+renderer.initialize();
