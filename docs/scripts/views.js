@@ -39,8 +39,9 @@ renderer = (function(){
     nextGoalSpan.innerHTML = `${impendingMonth.year}-${impendingMonth.month+1}`;
     nextGoalSpan.dataset['year'] = impendingMonth.year;
     nextGoalSpan.dataset['month'] = impendingMonth.month;
-    nextGoalSpan.dataset['dateTag'] = `y${impendingMonth.year}m${impendingMonth.month}`;
-
+    const stateKey = `y${impendingMonth.year}m${impendingMonth.month}`
+    nextGoalSpan.dataset['dateTag'] = stateKey;
+    document.querySelector('#jsNewGoals form').dataset['dateTag']=stateKey;
   }
 
   API.initialize = function(){

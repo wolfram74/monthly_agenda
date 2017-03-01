@@ -31,7 +31,11 @@ listeners = (function(){
         nonZeroThreshold: ele.children.nonZeroThreshold.value,
       }
     });
-    console.log(goals)
+    if(state[form.dataset['dateTag']] === undefined){
+      state[form.dataset['dateTag']]={}
+    }
+    state[form.dataset['dateTag']].goals=goals;
+    utils.saveState()
     // save goals
     // hide form
     // render goals if not rendered
