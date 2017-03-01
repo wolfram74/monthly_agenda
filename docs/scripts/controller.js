@@ -32,6 +32,9 @@ listeners = (function(){
       }
     });
     console.log(goals)
+    // save goals
+    // hide form
+    // render goals if not rendered
     // const goals = fields.
     // console.log(fields)
   }

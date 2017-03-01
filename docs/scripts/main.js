@@ -35,6 +35,21 @@ utils = (function(){
     return `y${year}m${month}`
   }
 
+  API.nextEmptyMonth = function(){
+    //return object {year, month}
+    const today = new Date();
+    const month = today.getMonth();
+    const year = today.getFullYear();
+
+    if( state[API.currentMonth()] === undefined ){
+      return {year, month}
+    }
+    const nextMonth = new Date(
+      year, 1+month
+      )
+    return {year: nextMonth.getFullYear(), month: nextMonth.getMonth()}
+  }
+
   API.currentWeek = function(){
     // compare to list of checkin days, get index of first <= to present
     // or see what getDate()-getDay()/7 floored is

@@ -33,7 +33,18 @@ renderer = (function(){
     return newLi
   }
 
+  API.setGoalFormData = function(){
+    const impendingMonth = utils.nextEmptyMonth();
+    let nextGoalSpan = document.querySelector('#jsNextGoals');
+    nextGoalSpan.innerHTML = `${impendingMonth.year}-${impendingMonth.month+1}`;
+    nextGoalSpan.dataset['year'] = impendingMonth.year;
+    nextGoalSpan.dataset['month'] = impendingMonth.month;
+    nextGoalSpan.dataset['dateTag'] = `y${impendingMonth.year}m${impendingMonth.month}`;
+
+  }
+
   API.initialize = function(){
+    API.setGoalFormData()
     if(typeof state.checkInDay != 'undefined'){
       API.updateCheckInDay();
     }
