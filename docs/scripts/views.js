@@ -47,6 +47,7 @@ renderer = (function(){
     API.setGoalFormData()
     if(typeof state.checkInDay != 'undefined'){
       API.updateCheckInDay();
+      document.querySelector('#jsCheckInDiv button').click()
     }
     if(typeof state[currentMonth] != 'undefined'){
       API.renderCurrentGoals();
