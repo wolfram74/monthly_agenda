@@ -44,6 +44,25 @@ renderer = (function(){
     document.querySelector('#jsNewGoals form').dataset['dateTag']=stateKey;
   }
 
+  API.renderCurrentGoals = function(){
+    const monthData = state[utils.currentMonth()]
+    const currentWeek = utils.nthWeek(new Date(), state.checkInDay)
+    const currentMonthDiv = document.querySelector('#jsCurrentMonth')
+    const goalsList = currentMonthDiv.querySelector('.currentGoals ul')
+    const goalsText = monthData.goals.map((goal)=>{
+      return `
+      <li>
+        <h4>${goal.description}</h4>
+        <p>${goal.plan}:<span>average of ${goal.nonZeroThreshold} minutes a day</span></p>
+      </li>`
+    }).join('')
+    console.log(currentMonthDiv)
+    goalsList.innerHTML = goalsText
+    console.log(goalsText)
+    console.log(monthData);
+    console.log(currentWeek);
+  }
+
   API.initialize = function(){
     API.setGoalFormData()
     if(typeof state.checkInDay != 'undefined'){
