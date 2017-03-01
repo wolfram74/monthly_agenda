@@ -32,7 +32,7 @@ listeners = (function(){
       }
     });
     if(state[form.dataset['dateTag']] === undefined){
-      state[form.dataset['dateTag']]={}
+      state[form.dataset['dateTag']]={weeks:[]}
     }
     state[form.dataset['dateTag']].goals=goals;
     utils.saveState()

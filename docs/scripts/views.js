@@ -45,8 +45,12 @@ renderer = (function(){
   }
 
   API.renderCurrentGoals = function(){
-    const monthData = state[utils.currentMonth()]
+    let monthData = state[utils.currentMonth()]
     const currentWeek = utils.nthWeek(new Date(), state.checkInDay)
+    if(monthData.weeks[currentWeek]===undefined){
+      utils.stateMaintainer()
+      monthData = state[utils.currentMonth()]
+    }
     const currentMonthDiv = document.querySelector('#jsCurrentMonth')
     const goalsList = currentMonthDiv.querySelector('.currentGoals ul')
     const goalsText = monthData.goals.map((goal)=>{
@@ -56,11 +60,7 @@ renderer = (function(){
         <p>${goal.plan}:<span>average of ${goal.nonZeroThreshold} minutes a day</span></p>
       </li>`
     }).join('')
-    console.log(currentMonthDiv)
     goalsList.innerHTML = goalsText
-    console.log(goalsText)
-    console.log(monthData);
-    console.log(currentWeek);
   }
 
   API.initialize = function(){

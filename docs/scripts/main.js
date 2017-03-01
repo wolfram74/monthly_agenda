@@ -94,6 +94,35 @@ utils = (function(){
   API.loadState = function(){
     return JSON.parse(localStorage.getItem('state')) || {};
   }
+  API.stateMaintainer = function(){
+    const currentWeek = API.nthWeek(new Date(), state.checkInDay);
+    const currentMonth = API.currentMonth()
+    const goalCount = state[currentMonth].goals.length
+    if(state[currentMonth].weeks[currentWeek]===undefined){
+      state[currentMonth].weeks[currentWeek] = API.blankWeek(goalCount)
+    }
+    for(let week=0; week<currentWeek; week++){
+      if(state[currentMonth].weeks[week]===undefined){
+        state[currentMonth].weeks[week] = API.blankWeek(goalCount)
+      }
+    }
+    API.saveState()
+  }
+
+  API.blankWeek = function(goalCount){
+    let week= {dailyChecks:[], weeklyProgress:[], weeklyReflection:[]}
+    for(let day=0; day<7; day++){
+      week.dailyChecks[day]=[]
+      for(let goal = 0; goal<goalCount; goal++){
+        week.dailyChecks[day][goal]=false
+      }
+    }
+    for(let goal = 0; goal<goalCount; goal++){
+      week.weeklyProgress[goal]=0
+      week.weeklyReflection[goal]=''
+    }
+    return week
+  }
   return API
 })()
 
