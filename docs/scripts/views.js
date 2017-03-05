@@ -61,6 +61,46 @@ renderer = (function(){
       </li>`
     }).join('')
     goalsList.innerHTML = goalsText
+    let weeksItems = API.weeksRender(monthData.weeks, currentWeek)
+    let weeksList = document.querySelector('.weeks ul')
+    for(let week=0; week < weeksItems.length; week++){
+      weeksList.appendChild(weeksItems[week])
+    }
+  }
+
+  API.weeksRender = function(weeks, currentWeek){
+    let weeksElements = weeks.map((week, index)=>{
+
+      console.log(index)
+      return API.weekRender(week, index, currentWeek)
+    })
+    return weeksElements
+  }
+
+  API.weekRender = function(week, index, currentWeek){
+    let weekLi = document.createElement('li');
+    let weekH4 = document.createElement('h4');
+    weekH4.innerHTML = `state of week ${index}`;
+    weekLi.appendChild(weekH4);
+
+    let goalList = document.createElement('ul');
+    let weekItemTexts = [];
+    const goals = state[utils.currentMonth()].goals
+
+    for(let goalIndex = 0; goalIndex< week.dailyChecks.length; goalIndex++){
+      let checkBoxes = week.dailyChecks[goalIndex].map((progress, index)=>{
+        return `<input type='checkbox' ${progress ? "checked='checked'": ''}>`
+      }).join('')
+      weekItemTexts.push(`
+        <li>
+          <span>${goals[goalIndex].description}</span>
+          <div class='dailyCheck'>${checkBoxes}</div>
+        </li>
+        `)
+    }
+    goalList.innerHTML = weekItemTexts.join('')
+    weekLi.appendChild(goalList)
+    return weekLi
   }
 
   API.initialize = function(){
