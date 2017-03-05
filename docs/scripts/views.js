@@ -95,6 +95,12 @@ renderer = (function(){
         <li>
           <span>${goals[goalIndex].description}</span>
           <div class='dailyCheck'>${checkBoxes}</div>
+          <select>
+            <option value = 0>No progress</option>
+            <option value = 1>Partial Progress</option>
+            <option value = 2>Adequate Progress</option>
+          </select>
+          <input type='text' placeholder='weekly reflection'>
         </li>
         `)
     }
