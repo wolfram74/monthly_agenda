@@ -112,8 +112,8 @@ utils = (function(){
   API.blankWeek = function(goalCount){
     let week= {dailyChecks:[], weeklyProgress:[], weeklyReflection:[]}
     for(let goal = 0; goal<goalCount; goal++){
+      week.dailyChecks[goal]=[]
       for(let day=0; day<7; day++){
-        week.dailyChecks[goal]=[]
         week.dailyChecks[goal][day]=false
       }
     }
