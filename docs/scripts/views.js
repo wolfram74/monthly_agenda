@@ -16,11 +16,9 @@ renderer = (function(){
   }
 
   API.updateCheckInDay = function(){
-    console.log(state.checkInDay)
     const selectedOption = document.querySelector(
       `#jsCheckInDiv option[value="${state.checkInDay}"]`
       );
-    console.log(selectedOption)
     selectedOption.selected = 'selected';
   }
 
@@ -52,6 +50,7 @@ renderer = (function(){
       monthData = state[utils.currentMonth()]
     }
     const currentMonthDiv = document.querySelector('#jsCurrentMonth')
+    currentMonthDiv.dataset['datetag'] = utils.currentMonth()
     const goalsList = currentMonthDiv.querySelector('.currentGoals ul')
     const goalsText = monthData.goals.map((goal)=>{
       return `
@@ -70,8 +69,6 @@ renderer = (function(){
 
   API.weeksRender = function(weeks, currentWeek){
     let weeksElements = weeks.map((week, index)=>{
-
-      console.log(index)
       return API.weekRender(week, index, currentWeek)
     })
     return weeksElements
@@ -79,6 +76,7 @@ renderer = (function(){
 
   API.weekRender = function(week, index, currentWeek){
     let weekLi = document.createElement('li');
+    weekLi.dataset['weeknum'] = index;
     let weekH4 = document.createElement('h4');
     weekH4.innerHTML = `state of week ${index}`;
     weekLi.appendChild(weekH4);
@@ -89,10 +87,10 @@ renderer = (function(){
 
     for(let goalIndex = 0; goalIndex< week.dailyChecks.length; goalIndex++){
       let checkBoxes = week.dailyChecks[goalIndex].map((progress, index)=>{
-        return `<input type='checkbox' ${progress ? "checked='checked'": ''}>`
+        return `<input type='checkbox' data-dayNum='${index}' ${progress ? "checked='checked'": ''}>`
       }).join('')
       weekItemTexts.push(`
-        <li>
+        <li data-goalNum=${goalIndex}>
           <span>${goals[goalIndex].description}</span>
           <div class='dailyCheck'>${checkBoxes}</div>
           <select>

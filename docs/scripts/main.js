@@ -19,6 +19,9 @@ utils = (function(){
     document.querySelector('#jsCheckInDiv select').addEventListener(
       'change', listeners.checkInUpdate
       );
+    document.querySelector('#jsCurrentMonth').addEventListener(
+      'change', listeners.currentMonthParser
+      );
     document.addEventListener('change',utils.saveState)
   }
 

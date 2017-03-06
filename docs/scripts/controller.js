@@ -43,7 +43,6 @@ listeners = (function(){
     // console.log(fields)
   }
   API.hideSibling = function(event){
-    console.log(event.target)
     event.preventDefault()
     if(event.target.parentElement.children[1].style.display===''){
       event.target.parentElement.children[1].style.display = 'none'
@@ -54,6 +53,18 @@ listeners = (function(){
 
   API.checkInUpdate = function(event){
     state.checkInDay = parseInt(event.target.value)
+  }
+  API.currentMonthParser = function(event){
+    // check box, I need month ID, week #, goal #, day #
+    // drop down and text, I need month ID, week #, goal #
+    console.log(event.type);
+    console.log(event.target);
+    const ele = event.target;
+    const goalEle = ele.closest('li');
+    const weekEle = goalEle.parentElement.closest('li');
+    const month = document.querySelector('#jsCurrentMonth').dataset['datetag']
+    console.log(month, weekEle.dataset['weeknum'], goalEle.dataset['goalnum'], ele.dataset.daynum)
+    // debugger
   }
   return API
 })()
