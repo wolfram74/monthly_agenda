@@ -94,11 +94,12 @@ renderer = (function(){
           <span>${goals[goalIndex].description}</span>
           <div class='dailyCheck'>${checkBoxes}</div>
           <select>
-            <option value = 0>No progress</option>
-            <option value = 1>Partial Progress</option>
-            <option value = 2>Adequate Progress</option>
+            <option value = 0 ${week.weeklyProgress[goalIndex]===0 ? 'selected="selected"' : ''}>No progress</option>
+            <option value = 1 ${week.weeklyProgress[goalIndex]===1 ? 'selected="selected"' : ''}>Partial Progress</option>
+            <option value = 2 ${week.weeklyProgress[goalIndex]===2 ? 'selected="selected"' : ''}>Adequate Progress</option>
           </select>
-          <input type='text' placeholder='weekly reflection'>
+          <input type='text' placeholder='weekly reflection'
+          value='${week.weeklyReflection[goalIndex]}'>
         </li>
         `)
     }

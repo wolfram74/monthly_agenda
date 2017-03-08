@@ -57,13 +57,26 @@ listeners = (function(){
   API.currentMonthParser = function(event){
     // check box, I need month ID, week #, goal #, day #
     // drop down and text, I need month ID, week #, goal #
-    console.log(event.type);
-    console.log(event.target);
     const ele = event.target;
     const goalEle = ele.closest('li');
     const weekEle = goalEle.parentElement.closest('li');
     const month = document.querySelector('#jsCurrentMonth').dataset['datetag']
-    console.log(month, weekEle.dataset['weeknum'], goalEle.dataset['goalnum'], ele.dataset.daynum)
+    const weekNum = weekEle.dataset['weeknum'];
+    const goalNum = goalEle.dataset['goalnum'];
+    const dayNum = ele.dataset.daynum;
+    const week = state[month].weeks[weekNum]
+    if(dayNum !== undefined){
+      console.log('checked', ele.checked)
+      week.dailyChecks[goalNum][dayNum] = ele.checked
+      return
+    };
+    if(ele.nodeName==='SELECT'){
+      console.log('progressed', parseInt(ele.value))
+      week.weeklyProgress[goalNum] = parseInt(ele.value)
+      return
+    }
+    console.log('reviewed', ele.value)
+    week.weeklyReflection[goalNum] = ele.value
     // debugger
   }
   return API
