@@ -79,6 +79,22 @@ listeners = (function(){
     week.weeklyReflection[goalNum] = ele.value
     // debugger
   }
+  API.importData = function(event){
+    event.preventDefault();
+    const importField = document.querySelector('#jsImport')
+    const newText = importField.children[1].value;
+    const testObject= JSON.parse(newText);
+    if(testObject.checkInDay !== undefined){
+      console.log('valid-ish data')
+      localStorage.setItem('state', JSON.stringify(testObject));
+      location.reload()
+    }
+  }
+  API.exportData = function(event){
+    event.preventDefault();
+    document.querySelector('#jsExport').children[1].value= JSON.stringify(state)
+  }
+
   return API
 })()
 

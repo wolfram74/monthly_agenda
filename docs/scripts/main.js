@@ -22,6 +22,9 @@ utils = (function(){
     document.querySelector('#jsCurrentMonth').addEventListener(
       'change', listeners.currentMonthParser
       );
+    document.querySelector('#jsImport button').addEventListener('click',listeners.importData
+      )
+    document.querySelector('#jsExport button').addEventListener('click', listeners.exportData)
     document.addEventListener('change',utils.saveState)
   }
 
