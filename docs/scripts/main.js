@@ -141,24 +141,6 @@ const months = [
   'May', 'June', 'July', 'August',
   'September', 'October', 'November', 'December']
 
-var demoState = {
-  'y2017m2': {
-    'weeks':[
-      {'dailyProgress':[
-        [false, false],
-        [false, false],
-        [false, false],
-        [true, false],
-        [false, false],
-        [false, false],
-        [false, false],
-        ],
-      'weeklyReflection':['minimal progress', 'no progress']
-      },
-    ],
-    'goals':['guitar', 'programming']
-  }
-}
 
 utils.setListeners();
 renderer.initialize();
